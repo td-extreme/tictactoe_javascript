@@ -45,6 +45,33 @@ describe("Tic Tac Toe Game Board", function() {
     });
   });
 
+  describe("Available Moves", function() {
+    var sut = new gameBoard.GameBoard(2);
+    it("When no moves have been played remaining moves should have 4 elements", function() {
+      expect(sut.availableMoves().length).to.equal(4);
+    });
+    it("After playing space 0, it should not be in the list of availableMoves", function() {
+      sut.playMove(0);
+      expect(sut.availableMoves()).to.deep.equal(new Array(1, 2, 3));
+    });
+   });
+
+
+
+  describe("Switching players", function() {
+    var sut = new gameBoard.GameBoard(3);
+    it("When no moves have been played 'X' is the current player", function() {
+      expect(sut.currentPlayer()).to.equal('X');
+    });
+
+    it("After a move is played 'O' is the current player", function() {
+      sut.playMove(0);
+      expect(sut.currentPlayer()).to.equal('O');
+    });
+
+  });
+
+
   describe("playing moves", function() {
     var sut = new gameBoard.GameBoard(3);
 
@@ -53,27 +80,27 @@ describe("Tic Tac Toe Game Board", function() {
     });
 
     it("returns false if the space has already been played", function() {
-      sut.playMove(8, 'X');
+      sut.playMove(8);
       expect(sut.validMove(8)).to.equal(false);
     });
 
     it("returns true if move as played", function() {
-      expect(sut.playMove(0, 'X')).to.equal(true);
+      expect(sut.playMove(0)).to.equal(true);
     });
 
     it("Sets space 1 to 'X'", function() {
-      sut.playMove(1, 'X');
+      sut.playMove(1);
       expect(sut.getSquare(1)).to.equal('X');
     });
 
     it("returns false if space is already taken", function() {
-      sut.playMove(2, 'X');
-      expect(sut.playMove(2, 'O')).to.equal(false);
+      sut.playMove(2);
+      expect(sut.playMove(2)).to.equal(false);
     });
 
     it("Doesn't override a move if that space is taken", function() {
-      sut.playMove(3, 'X');
-      sut.playMove(3, 'O');
+      sut.playMove(3);
+      sut.playMove(3);
       expect(sut.getSquare(3)).to.equal('X');
     });
   });
@@ -85,7 +112,7 @@ describe("Tic Tac Toe Game Board", function() {
     });
 
     it("empty returns fasle if a move has been played", function() {
-      sut.playMove(0, 'X');
+      sut.playMove(0);
       expect(sut.empty()).to.equal(false);
     });
 
@@ -94,9 +121,9 @@ describe("Tic Tac Toe Game Board", function() {
     });
 
     it("full returns true if there are no moves left", function() {
-      sut.playMove(1, 'O');
-      sut.playMove(2, 'O');
-      sut.playMove(3, 'O');
+      sut.playMove(1);
+      sut.playMove(2);
+      sut.playMove(3);
       expect(sut.full()).to.equal(true);
     });
   });

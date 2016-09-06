@@ -29,9 +29,23 @@ class GameBoard {
     return this._board[space];
   }
 
-  playMove (space, mark) {
+  availableMoves () {
+    var freeSpaces = new Array();
+    for (var i = 0; i < this._board.length; ++i) {
+      if (this.validMove(i)) {
+        freeSpaces.push(i);
+      }
+    }
+    return freeSpaces;
+  }
+
+  currentPlayer () {
+    return (this.availableMoves().length % 2 == 0 ? 'O' : 'X');
+  }
+
+  playMove (space) {
     if (this._board[space] === ' ') {
-      this._board[space] = mark;
+      this._board[space] = this.currentPlayer();
       return true;
     } else {
       return false;
