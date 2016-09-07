@@ -1,5 +1,13 @@
 class GameRules {
 
+  gameOver (board) {
+    return this.tiedGame(board) || !!this.winner(board);
+  }
+
+  tiedGame (board) {
+    return board.full() && !!this.winner(board);
+  }
+
   winner (board) {
     return (this.checkColsForWinner(board) ||
         this.checkRowsForWinner(board) ||

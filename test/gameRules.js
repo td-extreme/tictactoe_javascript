@@ -10,6 +10,51 @@ describe("Tic Tac Toe Game Rules", function() {
     this.sut = new gameRules.GameRules();
   });
 
+  describe("Getting the state of the game", function() {
+    describe("Tied Game", function() {
+      it("returns false if the game is not tied", function() {
+        expect(this.sut.tiedGame(this.board)).to.equal(false);
+      });
+      it("returns true if the game is tied", function() {
+        this.board.playMove(0);
+        this.board.playMove(1);
+        this.board.playMove(2);
+        this.board.playMove(5);
+        this.board.playMove(4);
+        this.board.playMove(6);
+        this.board.playMove(3);
+        this.board.playMove(8);
+        this.board.playMove(7);
+        expect(this.sut.tiedGame(this.board)).to.equal(true);
+      });
+    });
+    describe("Game Over", function() {
+      it("returns false if the game is not over", function() {
+        expect(this.sut.gameOver(this.board)).to.equal(false);
+      });
+      it("returns true if there is a winner", function() {
+        this.board.playMove(0);
+        this.board.playMove(4);
+        this.board.playMove(1);
+        this.board.playMove(5);
+        this.board.playMove(2);
+        expect(this.sut.gameOver(this.board)).to.equal(true);
+      });
+      it("returns true if the gameBoard is full and there is no winner", function() {
+        this.board.playMove(0);
+        this.board.playMove(1);
+        this.board.playMove(2);
+        this.board.playMove(5);
+        this.board.playMove(4);
+        this.board.playMove(6);
+        this.board.playMove(3);
+        this.board.playMove(8);
+        this.board.playMove(7);
+        expect(this.sut.gameOver(this.board)).to.equal(true);
+      });
+     });
+  });
+
   describe("Finding a winner", function() {
     describe("For a 3x3 board", function() {
       it("returns false on an empty board", function() {
