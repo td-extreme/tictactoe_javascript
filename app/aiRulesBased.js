@@ -16,8 +16,7 @@ class AiRulesBased {
       move = this.getCornerMove(board);
     }
     if (move === null) {
-      console.log("GET RANDOM");
-      move = this.getRandomMove(board);
+     move = this.getRandomMove(board);
     }
     return move;
   }
