@@ -1,7 +1,13 @@
+var clear = require('clear');
+
 class GameIO {
 
   constructor(wrapperIO) {
     this.wrapperIO = wrapperIO;
+  }
+
+  cls () {
+    clear();
   }
 
   getInput (message, callBack) {
