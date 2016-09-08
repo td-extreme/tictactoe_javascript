@@ -5,7 +5,7 @@ class MockWrapperIO {
   }
 
   cout (string) {
-    this.recievedOutput = this.recievedOutput.concat(string);
+    this.recievedOutput = string;
   }
 
   cin (message, callBack) {

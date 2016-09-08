@@ -4,7 +4,7 @@ class WrapperIO {
     console.log(string);
   }
 
- cin (message, caller, callback) {
+ cin (message, callBack) {
     var readline = require('readline');
     var rl = readline.createInterface({
       input: process.stdin,
@@ -13,7 +13,7 @@ class WrapperIO {
 
     rl.question(message, (input) => {
       rl.close();
-      callback(caller, input);
+      callBack(input);
     });
   }
 }

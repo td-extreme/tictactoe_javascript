@@ -14,25 +14,27 @@ class GameIO {
 
   printBoard(board) {
     var lastRow = board.rowSize() * (board.rowSize() - 1);
+    var boardOutput = "";
     for (var i = 0; i <= lastRow; i += board.rowSize()) {
       for (var j = 0; j < board.rowSize(); ++j) {
-        this.wrapperIO.cout(" " + board.getSquare(i + j) + " ");
+        boardOutput = boardOutput.concat(" " + board.getSquare(i + j) + " ");
         if (j !== board.rowSize() - 1) {
-          this.wrapperIO.cout("|");
+          boardOutput = boardOutput.concat("|");
         }
       }
       if (i !== lastRow) {
-        this.wrapperIO.cout("\n");
+        boardOutput = boardOutput.concat("\n");
         for (var k = 0; k < board.rowSize(); ++k) {
-          this.wrapperIO.cout("---");
+          boardOutput = boardOutput.concat("---");
           if (k !== board.rowSize() - 1) {
-            this.wrapperIO.cout("|");
+            boardOutput = boardOutput.concat("|");
           }
         }
-        this.wrapperIO.cout("\n");
+        boardOutput = boardOutput.concat("\n");
       }
     }
-    this.wrapperIO.cout("\n");
+    boardOutput = boardOutput.concat("\n");
+    this.wrapperIO.cout(boardOutput);
   }
 }
 exports.GameIO = GameIO;
