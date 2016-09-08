@@ -14,8 +14,8 @@ describe("Rules Based AI Player", function() {
   var expected;
 
   function callBack(results) {
-      expect(results).to.equal(expected);
-    }
+    expect(results).to.equal(expected);
+  }
 
   function callBackCorners(results) {
     expect(expected.includes(results)).to.equal(true);
@@ -38,7 +38,7 @@ describe("Rules Based AI Player", function() {
       expected = 6;
       this.sut.getMove(this.board, callBack);
     });
- });
+  });
   describe("Playing a blocking move", function() {
     it("Calls callBack with 0 if that move will block", function() {
       this.board._board[1] = 'O';
@@ -56,7 +56,7 @@ describe("Rules Based AI Player", function() {
       expected = 6;
       this.sut.getMove(this.board, callBack);
     });
- });
+  });
   describe("Playing the center move", function() {
     it("Calls callBack with the center if player played corner for 1st move", function() {
       this.board._board[0] = 'X';
@@ -70,7 +70,7 @@ describe("Rules Based AI Player", function() {
       this.board._board[1] = 'X';
       this.board._board[4] = 'O';
       expected = this.board.corners();
-       this.sut.getMove(this.board, callBackCorners);
+      this.sut.getMove(this.board, callBackCorners);
     });
 
   });
