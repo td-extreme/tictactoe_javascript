@@ -4,7 +4,7 @@ class AiRulesBased {
     this.rules = gameRules;
   }
 
-  getMove (board) {
+  getMove (board, callBack) {
     var move = this.getGameEndingMove(board, board.currentPlayer());
     if (move === null) {
       move = this.getGameEndingMove(board, board.nonCurrentPlayer());
@@ -16,9 +16,9 @@ class AiRulesBased {
       move = this.getCornerMove(board);
     }
     if (move === null) {
-     move = this.getRandomMove(board);
+      move = this.getRandomMove(board);
     }
-    return move;
+    callBack(move);
   }
 
   getGameEndingMove (board, mark) {
