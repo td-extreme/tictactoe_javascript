@@ -9,6 +9,7 @@ class MockWrapperIO {
   }
 
   cin (message, callBack) {
+    this.recievedOutput = message;
     callBack(this.mockInput);
   }
 
