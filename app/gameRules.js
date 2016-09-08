@@ -5,7 +5,7 @@ class GameRules {
   }
 
   tiedGame (board) {
-    return board.full() && !!this.winner(board);
+    return board.full() && !this.winner(board);
   }
 
   winner (board) {
@@ -16,13 +16,13 @@ class GameRules {
 
   checkDiagnolForWinner (board) {
     var ascendingStart = board.rowSize() - 1;
-    var ascendingEnd = ascendingStart * board.rowSize();
+    var ascendingEnd = ascendingStart * board.rowSize() + 1;
     if (this.isMatching(0, board.size(), board.rowSize() + 1, board)) {
      return board.getSquare(0);
     } else if (this.isMatching(ascendingStart, ascendingEnd, ascendingStart, board)) {
       return board.getSquare(ascendingStart);
     } else {
-     return false;
+     return null;
     }
   }
 
@@ -34,7 +34,7 @@ class GameRules {
         return board.getSquare(i);
       }
     }
-    return false;
+    return null;
   }
 
   checkRowsForWinner (board) {
@@ -45,14 +45,14 @@ class GameRules {
         return board.getSquare(i);
       }
     }
-    return false;
+    return null;
   }
 
   isMatching (start, end, incrementBy, board) {
-    if (board.getSquare(start) === ' ') { return false; }
+    if (board.getSquare(start) === ' ') { return null; }
     for (var i = start; i < end; i += incrementBy) {
       if (board.getSquare(start) !== board.getSquare(i)) {
-        return false;
+        return null;
       }
     }
     return true;
