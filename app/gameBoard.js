@@ -39,6 +39,10 @@ class GameBoard {
     return freeSpaces;
   }
 
+  nonCurrentPlayer() {
+    return (this.currentPlayer() === 'X' ? 'O' : 'X');
+  }
+
   currentPlayer () {
     return (this.availableMoves().length % 2 == 0 ? 'O' : 'X');
   }

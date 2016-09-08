@@ -16,7 +16,7 @@ class AiRulesBased {
       move = this.getCornerMove(board);
     }
     if (move === null) {
-      move = this.getRandomMove(board);
+     move = this.getRandomMove(board);
     }
     return move;
   }

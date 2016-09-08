@@ -59,10 +59,15 @@ describe("Tic Tac Toe Game Board", function() {
 
 
 
-  describe("Switching players", function() {
+  describe("Getting current and non current player", function() {
     it("When no moves have been played 'X' is the current player", function() {
       expect(this.sut.currentPlayer()).to.equal('X');
     });
+
+    it("When no moves have been played 'O' is the non current player", function() {
+      expect(this.sut.nonCurrentPlayer()).to.equal('O');
+    });
+
 
     it("After a move is played 'O' is the current player", function() {
       this.sut.playMove(0);
