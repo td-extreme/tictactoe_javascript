@@ -1,7 +1,7 @@
 var expect = require("chai").expect;
 var gameIO = require('../app/gameIO');
 var gameBoard = require('../app/gameBoard');
-var mockWrapperIO = require('./MockWrapperIO');
+var mockWrapperIO = require('./mockWrapperIO');
 
 function fillBoard(board) {
   for (var i = 0; i < board.size(); ++i) {
