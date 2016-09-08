@@ -6,9 +6,9 @@ class HumanPlayer {
   getMove(board, callBack) {
     var availableMoves = board.availableMoves();
     var message = "Please enter one of the following spaces ";
-    for (var i in availableMoves) {
-      message = message.concat(availableMoves[i] + " ");
-    }
+    availableMoves.forEach(function(move) {
+      message = message.concat(move + " ");
+    });
     message = message.concat(": ");
     this.gameIO.getInput(message, callBack);
   }
