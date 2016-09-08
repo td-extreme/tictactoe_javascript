@@ -57,8 +57,8 @@ describe("Tic Tac Toe Game Rules", function() {
 
   describe("Finding a winner", function() {
     describe("For a 3x3 board", function() {
-      it("returns false on an empty board", function() {
-        expect(this.sut.winner(this.board)).to.equal(false);
+      it("returns null on an empty board", function() {
+        expect(this.sut.winner(this.board)).to.equal(null);
       });
       describe("For 3 in a row", function() {
         it("returns 'X' when first row is all 'X'", function() {
@@ -253,7 +253,7 @@ describe("Tic Tac Toe Game Rules", function() {
           this.board4x4.playMove(6);
           this.board4x4.playMove(4);
           this.board4x4.playMove(9);
-          this.board4x4.playMove(6);
+          this.board4x4.playMove(8);
           this.board4x4.playMove(12);
           expect(this.sut.winner(this.board4x4)).to.equal('X');
           expect(this.sut.winner(this.board4x4)).to.equal('X');
