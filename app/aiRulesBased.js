@@ -5,20 +5,12 @@ class AiRulesBased {
   }
 
   getMove (board, callBack) {
-    var move = this.getGameEndingMove(board, board.currentPlayer());
-    if (move === null) {
-      move = this.getGameEndingMove(board, board.nonCurrentPlayer());
-    }
-    if (move === null) {
-      move = this.getCenterMove(board);
-    }
-    if (move === null) {
-      move = this.getCornerMove(board);
-    }
-    if (move === null) {
-      move = this.getRandomMove(board);
-    }
-    callBack(move);
+    var move = this.getGameEndingMove(board, board.currentPlayer()) ||
+      this.getGameEndingMove(board, board.nonCurrentPlayer()) ||
+      this.getCenterMove(board) ||
+      this.getCornerMove(board) ||
+      this.getRandomMove(board);
+    callBack(parseInt(move));
   }
 
   getGameEndingMove (board, mark) {
@@ -29,7 +21,7 @@ class AiRulesBased {
       var gameOver = this.rules.winner(board);
       board._board[move] = ' ';
       if (gameOver) {
-        return move;
+        return String(move);
       }
     }
     return null;
@@ -37,7 +29,7 @@ class AiRulesBased {
 
   getCenterMove (board) {
     if (board.size() === 9 && board.validMove(4)) {
-      return 4;
+      return String(4);
     }
     return null;
   }
@@ -53,13 +45,13 @@ class AiRulesBased {
     }
     if (availableCorners.length === 0 ) { return null; }
     var index = Math.floor(Math.random() * availableCorners.length);
-    return availableCorners[index];
+    return String(availableCorners[index]);
   }
 
   getRandomMove (board) {
     var moves = board.availableMoves();
     var index = Math.floor(Math.random() * moves.length);
-    return moves[index];
+    return String(moves[index]);
   }
 }
 exports.AiRulesBased = AiRulesBased;
