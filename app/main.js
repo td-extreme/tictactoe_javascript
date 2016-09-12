@@ -1,4 +1,4 @@
-var gridSize = 5;
+var gridSize = 3;
 
 var wrapperIO = require('./wrapperIO');
 var gameIO = require('./gameIO');

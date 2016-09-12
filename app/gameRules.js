@@ -1,20 +1,20 @@
 class GameRules {
 
-  gameOver (board) {
+  gameOver(board) {
     return this.tiedGame(board) || !!this.winner(board);
   }
 
-  tiedGame (board) {
+  tiedGame(board) {
     return board.full() && !this.winner(board);
   }
 
-  winner (board) {
+  winner(board) {
     return (this.checkColsForWinner(board) ||
         this.checkRowsForWinner(board) ||
         this.checkDiagnolForWinner(board));
   }
 
-  checkDiagnolForWinner (board) {
+  checkDiagnolForWinner(board) {
     var ascendingStart = board.rowSize() - 1;
     var ascendingEnd = ascendingStart * board.rowSize() + 1;
     if (this.isMatching(0, board.size(), board.rowSize() + 1, board)) {
@@ -26,7 +26,7 @@ class GameRules {
     }
   }
 
-  checkColsForWinner (board) {
+  checkColsForWinner(board) {
     var colSize = board.rowSize();
     for (var i = 0; i <= colSize; ++i) {
       var end = colSize * (colSize -1) + i + 1;
@@ -37,7 +37,7 @@ class GameRules {
     return null;
   }
 
-  checkRowsForWinner (board) {
+  checkRowsForWinner(board) {
     var rowSize = board.rowSize();
     var startOfLastRow = rowSize * (rowSize - 1);
     for (var i = 0; i <= startOfLastRow; i += rowSize) {
@@ -48,7 +48,7 @@ class GameRules {
     return null;
   }
 
-  isMatching (start, end, incrementBy, board) {
+  isMatching(start, end, incrementBy, board) {
     if (board.getSquare(start) === ' ') { return null; }
     for (var i = start; i < end; i += incrementBy) {
       if (board.getSquare(start) !== board.getSquare(i)) {
