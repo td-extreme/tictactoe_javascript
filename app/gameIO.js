@@ -2,23 +2,23 @@ var clear = require('clear');
 
 class GameIO {
 
-  constructor (wrapperIO) {
+  constructor(wrapperIO) {
     this.wrapperIO = wrapperIO;
   }
 
-  cls () {
+  cls() {
     clear();
   }
 
-  getInput (message, callBack) {
+  getInput(message, callBack) {
     this.wrapperIO.cin(message, callBack);
   }
 
-  print (string) {
+  print(string) {
     this.wrapperIO.cout(string);
   }
 
-  printBoard (board) {
+  printBoard(board) {
     var lastRow = board.rowSize() * (board.rowSize() - 1);
     var boardOutput = "";
     for (var i = 0; i <= lastRow; i += board.rowSize()) {

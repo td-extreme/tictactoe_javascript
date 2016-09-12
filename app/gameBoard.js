@@ -1,5 +1,5 @@
 class GameBoard {
-  constructor (rowSize) {
+  constructor(rowSize) {
     this._rowSize = rowSize;
     this._board = new Array(this._boardSize);
     var boardSize = this._rowSize * this._rowSize;
@@ -8,15 +8,15 @@ class GameBoard {
     }
   }
 
-  rowSize () {
+  rowSize() {
     return this._rowSize;
   }
 
-  size () {
+  size() {
     return this._board.length;
   }
 
-  corners () {
+  corners() {
     var corners = new Array();
     corners.push(0);
     corners.push(this.rowSize() - 1);
@@ -25,11 +25,11 @@ class GameBoard {
     return corners;
   }
 
-  getSquare (space) {
+  getSquare(space) {
     return this._board[space];
   }
 
-  availableMoves () {
+  availableMoves() {
     var freeSpaces = new Array();
     for (var i = 0; i < this._board.length; ++i) {
       if (this.validMove(i)) {
@@ -43,11 +43,11 @@ class GameBoard {
     return (this.currentPlayer() === 'X' ? 'O' : 'X');
   }
 
-  currentPlayer () {
+  currentPlayer() {
     return (this.availableMoves().length % 2 == 0 ? 'O' : 'X');
   }
 
-  playMove (space) {
+  playMove(space) {
     if (this._board[space] === ' ') {
       this._board[space] = this.currentPlayer();
       return true;
@@ -56,11 +56,11 @@ class GameBoard {
     }
   }
 
-  validMove (space) {
+  validMove(space) {
     return this._board[space] === ' ';
   }
 
-  empty () {
+  empty() {
     for (var i = 0; i < this._board.length; ++i) {
       if (!this.validMove(i)) {
         return false; }
@@ -68,7 +68,7 @@ class GameBoard {
     return true;
   }
 
-  full () {
+  full() {
     for (var i = 0; i < this._board.length; ++i) {
       if (this.validMove(i)) {
         return false; }

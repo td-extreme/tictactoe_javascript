@@ -4,7 +4,7 @@ class AiRulesBased {
     this.rules = gameRules;
   }
 
-  getMove (board, callBack) {
+  getMove(board, callBack) {
     var move = this.getGameEndingMove(board, board.currentPlayer()) ||
       this.getGameEndingMove(board, board.nonCurrentPlayer()) ||
       this.getCenterMove(board) ||
@@ -13,7 +13,7 @@ class AiRulesBased {
     callBack(parseInt(move));
   }
 
-  getGameEndingMove (board, mark) {
+  getGameEndingMove(board, mark) {
     var moves = board.availableMoves();
     for (var i = 0; i < moves.length; ++i) {
       var move = moves[i];
@@ -27,14 +27,14 @@ class AiRulesBased {
     return null;
   }
 
-  getCenterMove (board) {
+  getCenterMove(board) {
     if (board.size() === 9 && board.validMove(4)) {
       return String(4);
     }
     return null;
   }
 
-  getCornerMove (board) {
+  getCornerMove(board) {
     var corners = board.corners();
     var availableMoves = board.availableMoves();
     var availableCorners = [];
@@ -48,7 +48,7 @@ class AiRulesBased {
     return String(availableCorners[index]);
   }
 
-  getRandomMove (board) {
+  getRandomMove(board) {
     var moves = board.availableMoves();
     var index = Math.floor(Math.random() * moves.length);
     return String(moves[index]);

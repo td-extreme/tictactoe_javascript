@@ -75,5 +75,4 @@ describe("Tic Tac Toe Terminal Game", function() {
       });
     });
   });
-
 });

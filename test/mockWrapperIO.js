@@ -1,14 +1,14 @@
 class MockWrapperIO {
 
-  constructor () {
+  constructor() {
     this.recievedOutput = "";
   }
 
-  cout (string) {
+  cout(string) {
     this.recievedOutput = string;
   }
 
-  cin (message, callBack) {
+  cin(message, callBack) {
     this.recievedOutput = message;
     callBack(this.mockInput);
   }
@@ -17,7 +17,7 @@ class MockWrapperIO {
     return this.recievedOutput;
   }
 
-  setInput (string) {
+  setInput(string) {
     this.mockInput = string;
   }
 }

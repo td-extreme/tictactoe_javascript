@@ -1,10 +1,10 @@
 class WrapperIO {
 
-  cout (string) {
+  cout(string) {
     console.log(string);
   }
 
-  cin (message, callBack) {
+  cin(message, callBack) {
     var readline = require('readline');
     var rl = readline.createInterface({
       input: process.stdin,
