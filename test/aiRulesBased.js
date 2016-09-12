@@ -22,7 +22,7 @@ describe("Rules Based AI Player", function() {
   }
 
   describe("Playing a winning move", function() {
-    it("Calls callBack with  0 if that move will win, instead of trying to block", function() {
+    it("Calls callBack with 0 if that move will win, instead of trying to block", function() {
       this.board._board[1] = 'X';
       this.board._board[3] = 'O';
       this.board._board[2] = 'X';
