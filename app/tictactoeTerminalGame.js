@@ -2,12 +2,13 @@ var tictactoeGame = require('./tictactoeGame');
 
 class TicTacToeTerminalGame {
 
-  constructor(player1, player2, board, key, rules, io) {
+  constructor(player1, player2, board, key, rules, io, gameBoardFormatter) {
     this.ttt = new tictactoeGame.TicTacToeGame(board, rules);
     this.player1 = player1;
     this.player2 = player2;
     this.key = key;
     this.io = io;
+    this.gameBoardFormatter = gameBoardFormatter;
   }
 
   startGame() {
@@ -47,9 +48,9 @@ class TicTacToeTerminalGame {
   updateScreen(nextEvent) {
     this.io.cls();
     this.io.print("    KEY\n");
-    this.io.printBoard(this.key);
+    this.io.print(this.gameBoardFormatter.formatBoard(this.key));
     this.io.print("TIC TAC TOE\n");
-    this.io.printBoard(this.ttt.getBoard());
+    this.io.print(this.gameBoardFormatter.formatBoard(this.ttt.getBoard()));
     nextEvent();
   }
 
