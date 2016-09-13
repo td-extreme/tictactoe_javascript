@@ -8,6 +8,14 @@ class GameBoard {
     }
   }
 
+  deepCopy() {
+    var boardCopy = new GameBoard(this.rowSize());
+    for (var i = 0; i < this._board.length; ++i) {
+      boardCopy._board[i] = this._board[i];
+    }
+    return boardCopy;
+  }
+
   rowSize() {
     return this._rowSize;
   }

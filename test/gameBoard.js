@@ -7,6 +7,27 @@ describe("Tic Tac Toe Game Board", function() {
     this.sut = new gameBoard.GameBoard(3);
   });
 
+  describe("Making a copy of the board results in a deep copy", function() {
+    describe("When playing a move on a copy of an empty board", function() {
+      it("The orginal board is still blank", function() {
+        boardCopy = this.sut.deepCopy();
+        boardCopy.playMove(3);
+        expect(this.sut.getSquare(3)).to.equal(" ");
+      });
+    });
+    describe("When making a copy of a board that has moves played", function() {
+      it("The the copy has those moves played on it as well", function() {
+        this.sut.playMove(3);
+        this.sut.playMove(2);
+        this.sut.playMove(8);
+        boardCopy = this.sut.deepCopy();
+        for (var i = 0; i < boardCopy.size(); ++i) {
+          expect(boardCopy.getSquare(i)).to.equal(this.sut.getSquare(i));
+            }
+      });
+    });
+  });
+
   describe("Creating a blank 4x4 board", function() {
     var sut4x4 = new gameBoard.GameBoard(4);
     it("when constructor is passed 4 the size is 16 ", function() {
