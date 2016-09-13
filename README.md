@@ -6,8 +6,8 @@ A Tic Tac Toe console game written in javascript.
 
 To run test: 
 
-npm test
+`npm test`
 
 To run the terminal application:
 
-node app/main.js
+`node app/main.js`
